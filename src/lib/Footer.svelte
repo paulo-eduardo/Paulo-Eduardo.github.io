@@ -29,9 +29,6 @@
 					</li>
 				{/each}
 			</ul>
-			<ul class="copyright">
-				<li>&copy; Copyright 2017 CeeVee</li>
-			</ul>
 		</div>
 		<div id="go-top">
 			<a class="smoothscroll" title="Back to Top" href="#home"

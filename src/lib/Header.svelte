@@ -1,40 +1,5 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-
 	let navClass = "";
-
-	onMount(() => {
-		const header = document.querySelector("header");
-		const nav = document.getElementById("nav-wrap");
-
-		const handleScroll = () => {
-			if (header && nav) {
-				let h = header.offsetHeight;
-				let y = window.scrollY;
-
-				if (y > h * 0.2 && y < h && window.outerWidth > 768) {
-					nav.style.display = "none";
-				} else {
-					if (y < h * 0.2) {
-						navClass = "";
-						// nav.classList.remove("opaque");
-						nav.style.display = "block";
-					} else {
-						// nav.classList.add("opaque");
-						navClass = "opaque";
-						nav.style.display = "block";
-					}
-				}
-			}
-		};
-
-		window.addEventListener("scroll", handleScroll);
-
-		return () => {
-			// Cleanup event listener
-			window.removeEventListener("scroll", handleScroll);
-		};
-	});
 
 	let name = "Paulo Eduardo";
 	let city = "Brazil";
@@ -78,7 +43,48 @@
 		// 	className: "fa fa-skype",
 		// },
 	];
+
+	let currentSection = "home";
+	let sections = ["home", "about", "resume"];
+
+	const checkSection = () => {
+		const header = document.querySelector("header");
+		const nav = document.getElementById("nav-wrap");
+
+		if (header && nav) {
+			let h = header.offsetHeight;
+			let y = window.scrollY;
+
+			if (y > h * 0.2 && y < h && window.outerWidth > 768) {
+				nav.style.display = "none";
+			} else {
+				if (y < h * 0.2) {
+					navClass = "";
+					// nav.classList.remove("opaque");
+					nav.style.display = "block";
+				} else {
+					// nav.classList.add("opaque");
+					navClass = "opaque";
+					nav.style.display = "block";
+				}
+			}
+		}
+
+		let scrollPosition = window.pageYOffset;
+
+		sections.forEach((section) => {
+			let sectionElement = document.getElementById(section);
+			if (
+				sectionElement.offsetTop <= scrollPosition &&
+				sectionElement.offsetTop + sectionElement.offsetHeight > scrollPosition
+			) {
+				currentSection = section;
+			}
+		});
+	};
 </script>
+
+<svelte:window on:scroll={checkSection} />
 
 <header id="home">
 	<nav id="nav-wrap" class={navClass}>
@@ -89,29 +95,30 @@
 		>
 
 		<ul id="nav" class="nav">
-			<li class="current"><a class="smothscroll" href="#home">Home</a></li>
-			<li><a class="smoothscroll" href="#about">About</a></li>
-			<li><a class="smoothscroll" href="#resume">Resume</a></li>
-			<li><a class="smoothscroll" href="#portfolio">Works</a></li>
-			<li><a class="smoothscroll" href="#testimonials">Testimonials</a></li>
-			<li><a class="smoothscroll" href="#contact">Contact</a></li>
+			{#each sections as section (section)}
+				<li class={currentSection == section ? "current" : ""}>
+					<a class="smothscroll" href="#home">{section}</a>
+				</li>
+			{/each}
 		</ul>
 	</nav>
 
 	<div class="row banner">
 		<div class="banner-text">
-			<h1 class="responsive-headline">I'm {name}.</h1>
-			<h3>I'm a {city} based <span>{occupation} </span> {description}</h3>
-			<hr />
-			<ul class="social">
-				{#each networks as network (network.name)}
-					<li>
-						<a href={network.url} target="_blank"
-							><i class={network.className} /></a
-						>
-					</li>
-				{/each}
-			</ul>
+			<section id="home">
+				<h1 class="responsive-headline">I'm {name}.</h1>
+				<h3>I'm a {city} based <span>{occupation} </span> {description}</h3>
+				<hr />
+				<ul class="social">
+					{#each networks as network (network.name)}
+						<li>
+							<a href={network.url} target="_blank"
+								><i class={network.className} /></a
+							>
+						</li>
+					{/each}
+				</ul>
+			</section>
 		</div>
 	</div>
 

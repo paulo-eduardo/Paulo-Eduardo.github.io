@@ -24,7 +24,6 @@
 	fetch("work.json")
 		.then((response) => response.json() as Promise<Data>)
 		.then((data) => {
-			console.log(data.work);
 			work = data.work;
 			skills = data.skills;
 			skills_text = data.skills_text;

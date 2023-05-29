@@ -1,21 +1,43 @@
 <script lang="ts">
-	let data = {
-		name: "Paulo Eduardo da Silva",
-		image: "images/profilepic.jpg",
-		bio: "Hi, I’m a problem solver and I love to face new challenges! A senior developer with twelve years of career who loves to learn and evolve. Recently I’ve worked on one of the biggest international remote companies as a full stack developer and now I am focused on migrating to backend development.",
-		email: "pauloes.dev@gmail.com",
-		phone: "+55 (47) 93618-0910",
-		address: {
-			street: "Aracaju - Centro",
-			city: "Timbó",
-			state: "SC",
-			zip: "89120-000",
-		},
-		resumeDownload:
-			"https://docs.google.com/document/d/1LANNHRSDkEUWxLinm91SpZv-vqeD6wc2YaT_IGy6OmY/export?format=pdf",
+	type Address = {
+		street: string;
+		city: string;
+		state: string;
+		zip: string;
 	};
-	const { name, image, bio, email, phone, resumeDownload } = data;
-	const { street, city, state, zip } = data.address;
+
+	type Data = {
+		name: string;
+		image: string;
+		bio: string;
+		email: string;
+		phone: string;
+		address: Address;
+		resumeDownload: string;
+	};
+
+	let data: Data;
+	let name: string;
+	let image: string;
+	let bio: string;
+	let email: string;
+	let phone: string;
+	let resumeDownload: string;
+	let street: string;
+	let city: string;
+	let state: string;
+	let zip: string;
+
+	fetch("me.json")
+		.then((response) => response.json() as Promise<Data>)
+		.then((dataResponse) => {
+			data = dataResponse;
+			({ name, image, bio, email, phone, resumeDownload } = data);
+			({ street, city, state, zip } = data.address);
+		})
+		.catch((error) => {
+			console.error("Error:", error);
+		});
 </script>
 
 <section id="about">

@@ -1,41 +1,20 @@
 <script lang="ts">
-	let networks = [
-		// {
-		// 	name: "facebook",
-		// 	url: "http://facebook.com",
-		// 	className: "fa fa-facebook",
-		// },
-		{
-			name: "twitter",
-			url: "https://twitter.com/pauloesdev",
-			className: "fa fa-twitter",
-		},
-		// {
-		// 	name: "google-plus",
-		// 	url: "http://googleplus.com",
-		// 	className: "fa fa-google-plus",
-		// },
-		{
-			name: "linkedin",
-			url: "https://www.linkedin.com/in/paulo-es/",
-			className: "fa fa-linkedin",
-		},
-		{
-			name: "instagram",
-			url: "https://www.instagram.com/espaulo/",
-			className: "fa fa-instagram",
-		},
-		{
-			name: "github",
-			url: "https://github.com/Paulo-Eduardo",
-			className: "fa fa-github",
-		},
-		// {
-		// 	name: "skype",
-		// 	url: "http://skype.com",
-		// 	className: "fa fa-skype",
-		// },
-	];
+	type Network = {
+		name: string;
+		url: string;
+		className: string;
+	};
+
+	let networks: Array<Network> = [];
+
+	fetch("me.json")
+		.then((response) => response.json())
+		.then((dataResponse) => {
+			({ networks } = dataResponse);
+		})
+		.catch((error) => {
+			console.error("Error:", error);
+		});
 </script>
 
 <footer>

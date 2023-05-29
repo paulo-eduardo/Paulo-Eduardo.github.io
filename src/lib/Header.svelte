@@ -1,49 +1,34 @@
 <script lang="ts">
+	type Network = {
+		name: string;
+		url: string;
+		className: string;
+	};
+
+	type PersonalData = {
+		name: string;
+		city: string;
+		occupation: string;
+		description: string;
+		networks: Network[];
+	};
+
+	let name: string = "";
+	let city: string = "";
+	let occupation: string = "";
+	let description: string = "";
+	let networks: Array<Network> = [];
+
+	fetch("me.json")
+		.then((response) => response.json() as Promise<PersonalData>)
+		.then((dataResponse) => {
+			({ name, city, occupation, description, networks } = dataResponse);
+		})
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+
 	let navClass = "";
-
-	let name = "Paulo Eduardo";
-	let city = "Brazil";
-	let occupation = "Back-end Developer";
-	let description =
-		"I architect and develop web services, ensuring constant optimization and improvement.";
-	let networks = [
-		// {
-		// 	name: "facebook",
-		// 	url: "http://facebook.com",
-		// 	className: "fa fa-facebook",
-		// },
-		{
-			name: "twitter",
-			url: "https://twitter.com/pauloesdev",
-			className: "fa fa-twitter",
-		},
-		// {
-		// 	name: "google-plus",
-		// 	url: "http://googleplus.com",
-		// 	className: "fa fa-google-plus",
-		// },
-		{
-			name: "linkedin",
-			url: "https://www.linkedin.com/in/paulo-es/",
-			className: "fa fa-linkedin",
-		},
-		{
-			name: "instagram",
-			url: "https://www.instagram.com/espaulo/",
-			className: "fa fa-instagram",
-		},
-		{
-			name: "github",
-			url: "https://github.com/Paulo-Eduardo",
-			className: "fa fa-github",
-		},
-		// {
-		// 	name: "skype",
-		// 	url: "http://skype.com",
-		// 	className: "fa fa-skype",
-		// },
-	];
-
 	let currentSection = "home";
 	let sections = ["home", "about", "resume"];
 

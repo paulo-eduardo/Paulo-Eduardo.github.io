@@ -41,13 +41,7 @@
 		</div>
 		<div class="nine columns main-col">
 			<p>
-				My main specialties include Go, JS / Typescript, Node.js, Express,
-				Serverless, React, Redux, AWS, Docker, Vue.js and RESTful API. I am
-				passionate about back-end development and that is what I am most focused
-				on, but I really like React.js when it comes to front-end development. I
-				am also committed to staying up-to-date with the latest technologies and
-				have been learning GoLang for a time now and going in-depth with DevOps
-				culture.
+				{skills_text}
 			</p>
 
 			<div class="skills row">

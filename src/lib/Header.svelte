@@ -97,7 +97,7 @@
 		<ul id="nav" class="nav">
 			{#each sections as section (section)}
 				<li class={currentSection == section ? "current" : ""}>
-					<a class="smothscroll" href="#home">{section}</a>
+					<a class="smothscroll" href="#{section}">{section}</a>
 				</li>
 			{/each}
 		</ul>

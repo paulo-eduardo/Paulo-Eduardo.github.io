@@ -197,7 +197,7 @@ ul#nav li a:active {
 	background-color: transparent !important;
 }
 ul#nav li.current a {
-	color: #f06000;
+	color: #fa73fa;
 }
 
 /* ------------------------------------------------------------------ */
@@ -217,7 +217,7 @@ ul#nav li.current a {
 }
 #about a:hover,
 #about a:focus {
-	color: #11abb0;
+	color: #bd73fa;
 }
 
 #about h2 {
@@ -227,7 +227,7 @@ ul#nav li.current a {
 }
 #about p {
 	line-height: 30px;
-	color: #7a7a7a;
+	color: #fff;
 }
 #about .profile-pic {
 	position: relative;
@@ -284,7 +284,7 @@ ul#nav li.current a {
 	letter-spacing: 1px;
 }
 #resume h1 span {
-	border-bottom: 3px solid #11abb0;
+	border-bottom: 3px solid #bd73fa;
 	padding-bottom: 6px;
 }
 #resume h3 {

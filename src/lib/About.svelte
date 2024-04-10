@@ -1,9 +1,7 @@
 <script lang="ts">
 	type Address = {
-		street: string;
-		city: string;
+		country: string;
 		state: string;
-		zip: string;
 	};
 
 	type Data = {
@@ -23,17 +21,15 @@
 	let email: string;
 	let phone: string;
 	let resumeDownload: string;
-	let street: string;
-	let city: string;
 	let state: string;
-	let zip: string;
+	let country: string;
 
 	fetch("me.json")
 		.then((response) => response.json() as Promise<Data>)
 		.then((dataResponse) => {
 			data = dataResponse;
 			({ name, image, bio, email, phone, resumeDownload } = data);
-			({ street, city, state, zip } = data.address);
+			({ state, country } = data.address);
 		})
 		.catch((error) => {
 			console.error("Error:", error);
@@ -53,11 +49,7 @@
 					<h2>Contact Details</h2>
 					<p class="address">
 						<span>{name}</span><br />
-						<span>
-							{street}<br />
-							{city}, {state}
-							{zip}
-						</span>
+						<span> {state} - {country} </span>
 						<br />
 						<span>{phone}</span><br />
 						<a href="mailto:{email}" class="email">{email}</a>

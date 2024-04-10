@@ -1,9 +1,20 @@
 {
 	"work": [
 		{
+			"company": "Veho",
+			"title": "Software Engineer",
+			"years": "Jul 2023 - Jan 2024",
+			"description": [
+				"• Created a project using AWS CDK to set up an RDS database connected with Hasura and a Lambda listening to a SQS queue for monitoring job batches; ",
+				"• Developed a system to automate the updating of base rates based on internal rules, eliminating the need for manual adjustments by users;",
+				"• Implemented bug fixes and enhancements to existing features, incorporating rules based on flags and message types to improve functionality and reliability;\n",
+				"Tech stack: TypeScript, AWS CloudFormation, Jest, Amazon Dynamodb, AWS CDK, AWS Lambda, AWS SQS, AWS SNS, JavaScript, Node.js, Amazon Web Services (AWS), Docker"
+			]
+		},
+		{
 			"company": "X-Team",
 			"title": "Software Engineer",
-			"years": "Apr 2021 - June 2022",
+			"years": "Apr 2021 - Jun 2022",
 			"description": [
 				"Software Engineer responsible for development, maintenance and upgrades of the following projects\n",
 				"Beachbody’s:",
